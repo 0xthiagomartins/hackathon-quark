@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "eab8938d-752d-435e-9119-a14b9d41b09c",
+		"name": "Quark Investimentos - Sem pre Script",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25274992"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>Detail</th>",
+									"        <th>Raw Message</th>",
+									"        <th>Raw Error</th>",
+									"        <th>Endpoint Called</th>",
+									"    </tr>",
+									"    <tr>",
+									"        <td>{{response.detail}}</td>",
+									"        <td>{{response.raw_message}}</td>",
+									"        <td>{{response.raw_error}}</td>",
+									"        <td>{{response.endpoint_called}}</td>",
+									"    </tr>",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return { response: pm.response.json() }",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@quark.com.br\",\r\n  \"password\": \"quark54312\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzUyMDE3NzcsImV4cCI6MTY3Nzc5NTU3NywidHlwZV90b2tlbiI6InJlZnJlc2hfdG9rZW4iLCJ1c2VyX2lkIjoxLCJhcGVsaWRvX2ZhbnRhc2lhIjoiVEhJQUdPIiwicGVyZmlsIjoiQVJKIiwicm9sZSI6IjAwIiwicGVzc29hX2lkIjoxfQ.5Pz9YZ1vnYkjuuE-kJkmHNKGEe_K2njThTmM1YR8rZg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwidXVpZCI6IjJlNDA2Zjg2LTg5NTItNDNlNS1hN2ZhLTgwODY3Y2Y0MTMwMiIsImNyZWRlbnRpYWxzIjp7InVzZXJfaWQiOjEsInJvbGVzIjpbeyJ1cGRhdGVkX2F0IjoiMjAyNC0xMS0wMlQwODo1NTozOC43MTA5MjciLCJpZCI6MSwiZGVzY3JpcHRpb24iOiJGdWxsIGFjY2VzcyB3aXRoIHJlYWQsIGVkaXQsIGRlbGV0ZSwgYW5kIGFwcHJvdmUgcGVybWlzc2lvbnMuIiwiY3JlYXRlZF9hdCI6IjIwMjQtMTEtMDJUMDg6NTU6MzguNzEwOTI3IiwiYXJjaGl2ZWQiOmZhbHNlLCJuYW1lIjoiQURNSU4ifV19LCJpYXQiOjE3MzA1NDkxNTYsImV4cCI6MTczMDYzNTU1Nn0.zW7v2vsf7WZ5gYDnbbcdR-2gDmN20HIGm593j7c0aKY",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwidXVpZCI6IjJlNDA2Zjg2LTg5NTItNDNlNS1hN2ZhLTgwODY3Y2Y0MTMwMiIsImNyZWRlbnRpYWxzIjp7InVzZXJfaWQiOjEsInJvbGVzIjpbeyJ1cGRhdGVkX2F0IjoiMjAyNC0xMS0wMlQwODo1NTozOC43MTA5MjciLCJpZCI6MSwiZGVzY3JpcHRpb24iOiJGdWxsIGFjY2VzcyB3aXRoIHJlYWQsIGVkaXQsIGRlbGV0ZSwgYW5kIGFwcHJvdmUgcGVybWlzc2lvbnMuIiwiY3JlYXRlZF9hdCI6IjIwMjQtMTEtMDJUMDg6NTU6MzguNzEwOTI3IiwiYXJjaGl2ZWQiOmZhbHNlLCJuYW1lIjoiQURNSU4ifV19LCJpYXQiOjE3MzA1NDkxNTYsImV4cCI6MTczMDYzNTU1Nn0.zW7v2vsf7WZ5gYDnbbcdR-2gDmN20HIGm593j7c0aKY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwidXVpZCI6IjZjNTI4NTA3LWVjYjMtNDdlMC04ZTY1LTU3MTRlNzU3OTU1MyIsImNyZWRlbnRpYWxzIjp7ImJ1c2luZXNzX2lkIjoxLCJ1c2VyX2lkIjo3LCJyb2xlX2lkIjoyfSwiaWF0IjoxNzAwMTUyMDIzLCJleHAiOjE3MDAyMzg0MjN9.CU3fVQnNpjXMAw-Kx-vDr4zpAt7osTwiBAtWxacwBpc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "a6b8de3d-3de0-4fa5-a35a-80f499914e78",
+		"name": "Quark Investimentos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25274992"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"credentials\": {\n        \"email\": \"thiago.fm211212@gmail.com\", \n        \"password\": \"traineee@123\"\n        },\n    \"name\" : \"algum test maroto\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Report My Clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/clients/report",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clients",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Report Current Operations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/operations/report/current",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"operations",
+						"report",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Report Active Operations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/operations/report/active",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"operations",
+						"report",
+						"active"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Clients",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/clients/import",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clients",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Operations",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/operations/import",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"operations",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Operations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef9914c-d125-40e0-926a-a71a8c12e356"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/operations/import",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"operations",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Clients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef991e4-d5b4-4370-863b-1e50f8c14241"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/clients/import",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clients",
+						"import"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"url\", \"http://localhost:8000\");",
+					"var body_auth = '{'+",
+					"'\t\"email\":\"admin@quark.com.br\",'+",
+					"'\t\"password\":\"quark54312\"'+",
+					"'}';",
+					"",
+					"pm.sendRequest({",
+					"    url: pm.environment.get(\"url\") + '/auth',",
+					"    method: 'POST',",
+					"    header: {",
+					"        'content-type': 'application/json'",
+					"    },    ",
+					"    body: {",
+					"        mode: 'raw',",
+					"        raw: body_auth",
+					"    }",
+					"}, function (err, res) {",
+					"    console.log('res');",
+					"    pm.environment.set(\"access_token\", res.json().access_token);",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

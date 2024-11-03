@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #ff0000;
+  --secondary: #6b7280;
+  --accent: #b0879b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #ff0000;
+    --secondary: #9ca3af;
+    --accent: #b0879b;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+label,
+input {
+  color: black;
+}

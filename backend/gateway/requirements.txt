@@ -1,0 +1,12 @@
+nameko==3.0.0-rc11
+python-dotenv
+pytest
+pytest-cov
+fastapi
+uvicorn[standard]
+gunicorn
+cryptography
+pydantic
+pydantic[email]
+email-validator
+python-multipart

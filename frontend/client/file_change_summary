@@ -1,0 +1,30 @@
+// New Files
+src/
+├─ app/
+│  ├─ clients/
+│  │  └─ page.tsx
+│  ├─ operations/
+│  │  └─ page.tsx
+├─ components/
+│  ├─ UserDataModal.tsx
+│  ├─ Loader.tsx
+│  ├─ Navbar.tsx
+│  ├─ Button.tsx
+│  └─ ErrorBoundary.tsx
+├─ context/
+│  └─ AuthContext.tsx
+├─ hooks/
+│  └─ useApi.ts
+├─ helpers/
+│  └─ operations.ts
+├─ types/
+│  └─ api.d.ts
+.env.local
+
+// Modified Files
+src/
+├─ app/
+│  └─ layout.tsx
+├─ tailwind.config.ts
+├─ postcss.config.mjs
+└─ app/globals.css 

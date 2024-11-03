@@ -1,0 +1,3 @@
+source ./resources/.env
+echo Starting Nameko.
+exec nameko run --config src/config.yaml src.service
